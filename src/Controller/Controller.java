@@ -5,12 +5,10 @@ import java.util.Scanner;
 import Model.Model;
 import View.View;
 
-/**
- * Created by wookie on 4/22/16.
- */
+
 public class Controller {
-    Model model;
-    View view;
+    private Model model;
+    private View view;
 
     public Controller(Model model, View view) {
         this.model = model;
@@ -20,20 +18,47 @@ public class Controller {
     // The Work method
     public void processUser(){
         Scanner sc = new Scanner(System.in);
+        int userNumber = -1;
 
-        //model.setValue(inputIntValueWithScanner(sc));
-        //model.addIntOurValue(4);
+        while(userNumber != model.getNumber()) {
+            userNumber = inputIntValueWithScanner(sc);
 
-        //view.printMessageAndInt(view.OUR_INT, model.getValue());
+            if(userNumber < model.getNumber()) {
+                view.printMessage(view.LOWER_VALUE_MESSAGE);
+                model.setLowerBorder(userNumber);
+            }
+            else
+                if(userNumber > model.getNumber()) {
+                    view.printMessage(view.BIGGER_VALUE_MESSAGE);
+                    model.setUpperBorder(userNumber);
+                }
+        }
+
+        view.printMessage(view.SUCCESS_MESSAGE);
     }
 
     // The Utility methods
+    /**
+     *
+     * @param sc System.in Scanner
+     * @return proper integer value between specified borders
+     */
     public int inputIntValueWithScanner(Scanner sc) {
-        view.printMessage(view.INPUT_INT_DATA);
+        int temp;
+        view.printRequestMessage(model.getLowerBorder(), model.getUpperBorder());
+        // Checking on proper integer value.
         while( ! sc.hasNextInt()) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
+            view.printMessage(view.WRONG_INPUT_INT_DATA);
+            view.printRequestMessage(model.getLowerBorder(), model.getUpperBorder());
             sc.next();
         }
-        return sc.nextInt();
+
+        temp = sc.nextInt();
+        // Checking if the integer value don't lie inside specified borders.
+        if((temp < model.getLowerBorder() || (temp > model.getUpperBorder()))) {
+            view.printMessage(view.WRONG_INPUT_INT_DATA);
+            return inputIntValueWithScanner(sc);
+        }
+        return temp;
     }
 }
