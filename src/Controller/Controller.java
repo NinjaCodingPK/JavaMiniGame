@@ -54,7 +54,7 @@ public class Controller {
         }
 
         temp = sc.nextInt();
-        // Checking if the integer value don't lie inside specified borders.
+        // Checking if the integer value doesn't lie inside a specified borders.
         if((temp < model.getLowerBorder() || (temp > model.getUpperBorder()))) {
             view.printMessage(view.WRONG_INPUT_INT_DATA);
             return inputIntValueWithScanner(sc);
