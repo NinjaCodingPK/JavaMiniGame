@@ -25,12 +25,12 @@ public class Controller {
 
             if(userNumber < model.getNumber()) {
                 view.printMessage(view.LOWER_VALUE_MESSAGE);
-                model.setLowerBorder(userNumber);
+                model.setLowerBorder(userNumber+1);
             }
             else
                 if(userNumber > model.getNumber()) {
                     view.printMessage(view.BIGGER_VALUE_MESSAGE);
-                    model.setUpperBorder(userNumber);
+                    model.setUpperBorder(userNumber-1);
                 }
         }
 
