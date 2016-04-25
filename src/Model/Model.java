@@ -1,5 +1,5 @@
 package Model;
-
+import java.util.ArrayList;
 /**
  * Created by wookie on 4/22/16.
  */
@@ -7,11 +7,16 @@ public class Model {
     private int lowerBorder;
     private int upperBorder;
     private int number;
+    /**
+     * a variable for saving user statistic.
+     */
+    private ArrayList<Integer> statistic;
 
     public Model() {
         lowerBorder = 0;
         upperBorder = 100;
         number = rand(0, 100);
+        statistic = new ArrayList<>();
     }
 
     /**
@@ -32,6 +37,14 @@ public class Model {
         return (int)(Math.random() * Integer.MAX_VALUE);
     }
 
+    /**
+     * Method for saving user's turns.
+     * @param userNumber a number which user input the last time
+     */
+    public void addTurn(int userNumber) {
+        statistic.add(userNumber);
+    }
+
     public int getNumber() {
         return number;
     }
@@ -50,5 +63,9 @@ public class Model {
 
     public void setLowerBorder(int lowerBorder) {
         this.lowerBorder = lowerBorder;
+    }
+
+    public ArrayList<Integer> getStatistic() {
+        return statistic;
     }
 }
