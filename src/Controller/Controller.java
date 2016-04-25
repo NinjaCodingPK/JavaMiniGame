@@ -22,6 +22,7 @@ public class Controller {
 
         while(userNumber != model.getNumber()) {
             userNumber = inputIntValueWithScanner(sc);
+            model.addTurn(userNumber);
 
             if(userNumber < model.getNumber()) {
                 view.printMessage(view.LOWER_VALUE_MESSAGE);
@@ -35,6 +36,7 @@ public class Controller {
         }
 
         view.printMessage(view.SUCCESS_MESSAGE);
+        view.printStatistic(model.getStatistic());
     }
 
     // The Utility methods
