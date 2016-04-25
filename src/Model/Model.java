@@ -46,6 +46,7 @@ public class Model {
      * @return true if user's number is equal to the hidden number. False if not.
      */
     public boolean checkUserNumber(int userNumber) {
+        this.addTurn(userNumber);
         if(userNumber < this.getNumber()) {
             this.setLowerBorder(userNumber);
         }

@@ -24,7 +24,7 @@ public class Controller {
         }
 
         view.printMessage(View.SUCCESS_MESSAGE);
-        //view.printStatistic(model.getStatistic());
+        view.printStatistic(model.getStatistic());
     }
 
     // The Utility methods
