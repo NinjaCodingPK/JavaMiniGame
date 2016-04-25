@@ -18,25 +18,13 @@ public class Controller {
     // The Work method
     public void processUser(){
         Scanner sc = new Scanner(System.in);
-        int userNumber = -1;
 
-        while(userNumber != model.getNumber()) {
-            userNumber = inputIntValueWithScanner(sc);
-            model.addTurn(userNumber);
-
-            if(userNumber < model.getNumber()) {
-                view.printMessage(view.LOWER_VALUE_MESSAGE);
-                model.setLowerBorder(userNumber+1);
-            }
-            else
-                if(userNumber > model.getNumber()) {
-                    view.printMessage(view.BIGGER_VALUE_MESSAGE);
-                    model.setUpperBorder(userNumber-1);
-                }
+        while(!model.checkUserNumber(inputIntValueWithScanner(sc))) {
+            view.printMessage(View.WRONG_MESSAGE);
         }
 
-        view.printMessage(view.SUCCESS_MESSAGE);
-        view.printStatistic(model.getStatistic());
+        view.printMessage(View.SUCCESS_MESSAGE);
+        //view.printStatistic(model.getStatistic());
     }
 
     // The Utility methods
@@ -45,20 +33,20 @@ public class Controller {
      * @param sc System.in Scanner
      * @return proper integer value between specified borders
      */
-    public int inputIntValueWithScanner(Scanner sc) {
+    private int inputIntValueWithScanner(Scanner sc) {
         int temp;
         view.printRequestMessage(model.getLowerBorder(), model.getUpperBorder());
         // Checking on proper integer value.
         while( ! sc.hasNextInt()) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA);
+            view.printMessage(View.WRONG_INPUT_INT_DATA);
             view.printRequestMessage(model.getLowerBorder(), model.getUpperBorder());
             sc.next();
         }
 
         temp = sc.nextInt();
         // Checking if the integer value doesn't lie inside a specified borders.
-        if((temp < model.getLowerBorder() || (temp > model.getUpperBorder()))) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA);
+        if((temp <= model.getLowerBorder() || (temp >= model.getUpperBorder()))) {
+            view.printMessage(View.WRONG_INPUT_INT_DATA);
             return inputIntValueWithScanner(sc);
         }
         return temp;
