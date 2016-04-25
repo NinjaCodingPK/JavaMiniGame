@@ -41,7 +41,7 @@ public class Model {
 
     /**
      * Method checks the coincidence between user's number and the hidden number.
-     * If it wasn't found set proper lower or upper border depends on value of user's number.
+     * If values are not equal set proper lower or upper border depends on value of user's number.
      * @param userNumber the number which user input in console.
      * @return true if user's number is equal to the hidden number. False if not.
      */
