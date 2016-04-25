@@ -1,5 +1,7 @@
 package View;
 
+import java.util.ArrayList;
+
 /**
  * Created by wookie on 4/22/16.
  */
@@ -17,6 +19,12 @@ public class View {
 
     public void printRequestMessage(int lowerBorder, int upperBorder){
         System.out.println(REQUEST_MESSAGE + lowerBorder + " and " + upperBorder);
+    }
+
+    public void printStatistic(ArrayList<Integer> statistic) {
+        System.out.println("Your turns :");
+        for(int i : statistic)
+            System.out.println(i);
     }
 
 }
