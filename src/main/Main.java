@@ -1,8 +1,8 @@
-package MiniGame;
+package main;
 
-import Model.Model;
-import View.View;
-import Controller.Controller;
+import model.Model;
+import view.View;
+import controller.Controller;
 /**
  * Created by wookie on 4/22/16.
  */

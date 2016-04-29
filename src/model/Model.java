@@ -1,4 +1,4 @@
-package Model;
+package model;
 import java.util.ArrayList;
 /**
  * Created by wookie on 4/22/16.
@@ -6,18 +6,13 @@ import java.util.ArrayList;
 public class Model {
     private int lowerBorder;
     private int upperBorder;
-    private int number;
+    private int secretValue;
     /**
      * a variable for saving user statistic.
      */
     private ArrayList<Integer> statistic;
-    private static final int START_LOWER_BORDER = 0;
-    private static final int START_UPPER_BORDER = 100;
 
     public Model() {
-        lowerBorder = START_LOWER_BORDER;
-        upperBorder = START_UPPER_BORDER;
-        number = rand(START_LOWER_BORDER, START_UPPER_BORDER);
         statistic = new ArrayList<>();
     }
 
@@ -47,17 +42,34 @@ public class Model {
      */
     public boolean checkUserNumber(int userNumber) {
         this.addTurn(userNumber);
-        if(userNumber < this.getNumber()) {
+        if(userNumber < this.getSecretValue()) {
             this.setLowerBorder(userNumber);
         }
         else
-            if(userNumber > this.getNumber()) {
+            if(userNumber > this.getSecretValue()) {
                 this.setUpperBorder(userNumber);
             }
             else //if user's number is equal to the hidden number.
                 return true;
 
         return false;
+    }
+
+    /**
+     * Set upper and lower borders
+     * @param lowerBorder lower border
+     * @param upperBorder upper border
+     */
+    public void setBorders(int lowerBorder, int upperBorder) {
+        this.lowerBorder = lowerBorder;
+        this.upperBorder = upperBorder;
+    }
+
+    /**
+     * Initialize secretValue with a random number
+     */
+    public void setSecretValue() {
+        this.secretValue = rand(lowerBorder, upperBorder);
     }
 
     /**
@@ -68,8 +80,8 @@ public class Model {
         statistic.add(userNumber);
     }
 
-    public int getNumber() {
-        return number;
+    public int getSecretValue() {
+        return secretValue;
     }
 
     public int getUpperBorder() {

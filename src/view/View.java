@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,8 @@ import java.util.ArrayList;
  */
 public class View {
     // Text's constants
-    public static final String WRONG_INPUT_INT_DATA = "Wrong input!";
+    public static final String WRONG_INPUT_INT_DATA = "Wrong input! It's not an integer!";
+    public static final String WRONG_INPUT_NOT_INSIDE = "Wrong input! Your value isn't inside borders";
     private static final String REQUEST_MESSAGE = "Please input an integer value between values ";
     public static final String WRONG_MESSAGE = "Nope! Your value is wrong. Try again.";
     public static final String SUCCESS_MESSAGE = "YES! It's the right number. ";
